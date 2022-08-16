@@ -1,0 +1,18 @@
+[
+  {
+    "id": 0,
+    "name": "Messi",
+    "team": "PSG",
+    "age": 35,
+    "country": "Argentina",
+    "pos": "DC"
+  },
+  {
+    "id": 1,
+    "name": "Cristiano",
+    "team": "Manchester United",
+    "age": 38,
+    "country": "Portugal",
+    "pos": "DC"
+  }
+]

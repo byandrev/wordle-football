@@ -1,0 +1,58 @@
+:root {
+  --bg-color: #323031;
+  --green-color: #419d78;
+  --red-color: #db3a34;
+  --yellow-color: #ffc857;
+  --text: #fff;
+
+  --font-family: sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text);
+  font-family: var(--font-family);
+}
+
+#app {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.search input {
+  width: 100%;
+  border-radius: 5px;
+  border: 1px solid #aaa;
+  padding: 0.6rem 1rem;
+  font-family: inherit;
+}
+
+.search .search-results {
+  background-color: #222122;
+  border: 1px solid #333;
+  border-bottom-left-radius: 0.6rem;
+  border-bottom-right-radius: 0.6rem;
+  overflow: hidden;
+}
+
+.search .result {
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+.search .result:hover {
+  background-color: #181818;
+}
+
+.player-info span {
+  background-color: red;
+}
+
+.player-info span.correct {
+  background-color: green;
+}
