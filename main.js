@@ -3,27 +3,43 @@ import './style.css'
 import generateRandomPlayer from './utils/generateRandomPlayer'
 import getPlayers from './utils/getPlayers'
 import renderPlayer from './components/Player'
+import state from './utils/state'
 
 const app = document.querySelector('#app')
-let players = null
-let playerAnswer = null
-let lives = 6
+
+function renderWin() {
+    const searchContainer = document.querySelector('.search')
+    searchContainer.classList.add('win')
+    searchContainer.innerHTML = `
+        <span>${state.playerAnswer.name}</span>
+    `
+}
 
 function selector (playerId) {
-  const playerSelected = players[playerId]
+  if (state.win) {
+      return
+  }
+
+  const playerSelected = state.players[playerId]
 
   const playersContiners = document.createElement('div')
-  playersContiners.appendChild(renderPlayer(playerSelected, playerAnswer))
+  playersContiners.appendChild(renderPlayer(playerSelected))
   app.appendChild(playersContiners)
 
-  lives--
+  console.log(playerId, state.playerAnswer.id)
+
+  if (parseInt(playerId) === state.playerAnswer.id) {
+      alert('Win!!' + ", Attempts: " + state.attempts)
+      state.win = true
+      renderWin()
+  }
 }
 
 async function init () {
-  playerAnswer = await generateRandomPlayer()
-  players = await getPlayers()
+  state.playerAnswer = await generateRandomPlayer()
+  state.players = await getPlayers()
 
-  app.appendChild(Search(players, selector))
+  app.appendChild(Search(selector))
 }
 
 document.addEventListener('DOMContentLoaded', init)

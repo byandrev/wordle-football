@@ -2,6 +2,7 @@
   {
     "id": 0,
     "name": "Messi",
+    "league": "Ligue 1",
     "team": "PSG",
     "age": 35,
     "country": "Argentina",
@@ -10,6 +11,7 @@
   {
     "id": 1,
     "name": "Cristiano",
+    "league": "Premier League",
     "team": "Manchester United",
     "age": 38,
     "country": "Portugal",
