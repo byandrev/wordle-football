@@ -1,7 +1,4 @@
-import getPlayers from './getPlayers'
-
-export default async function generateRandomPlayer () {
-  const players = await getPlayers()
+export default async function generateRandomPlayer (players) {
   const posRandom = Math.floor(Math.random() * players.length)
   return players[posRandom]
 }

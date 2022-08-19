@@ -10,14 +10,14 @@ function renderPlayer (player) {
       <span class="player-name">${player.name}</span>
     </div>
     <div class="player-info">
-      <span class="${player.country === playerAnswer.country && 'correct'}">${player.country}</span>
-      <span class="${player.league === playerAnswer.league && 'correct'}">${player.league}</span>
-      <span class="${player.team === playerAnswer.team && 'correct'}">${player.team}</span>
+      <span class="${player.nationality === playerAnswer.nationality && 'correct'}">${player.nationality}</span>
+      <span class="${player.league.name === playerAnswer.league.name && 'correct'}">${player.league.name}</span>
+      <span class="${player.team.name === playerAnswer.team.name && 'correct'}">${player.team.name}</span>
       <span class="${player.age === playerAnswer.age && 'correct'}">
         ${player.age !== playerAnswer.age ? player.age > playerAnswer.age ? '🔻' : '🔺' : ''}
         ${player.age}
       </span>
-      <span class="${player.pos === playerAnswer.pos && 'correct'}">${player.pos}</span>
+      <span class="${player.position === playerAnswer.position && 'correct'}">${player.position}</span>
     </div>
   `
 

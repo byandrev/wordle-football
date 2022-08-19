@@ -9,7 +9,7 @@ function filterPlayers(namePlayer) {
     const playersContainer = document.createElement('div')
 
     state.players.forEach(player => {
-        if (namePlayer.length > 0 && player.name.startsWith(namePlayer)) {
+        if (namePlayer.length > 0 && player.name.includes(namePlayer)) {
             const playerElement = document.createElement('div')
             playerElement.classList.add('result')
             playerElement.setAttribute('data-id', player.id)
