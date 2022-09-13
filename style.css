@@ -76,7 +76,11 @@ body {
 }
 
 .player-name {
-    display: block;
+  display: block;
+}
+
+.player-info {
+  display: flex;
 }
 
 .player-info span {
@@ -90,3 +94,8 @@ body {
   background-color: green;
 }
 
+.player-flag {
+  width: 30px;
+  display: block;
+  margin: 0;
+}

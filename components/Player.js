@@ -1,6 +1,6 @@
 import state from '../utils/state'
 
-async function renderPlayer (player) {
+function renderPlayer (player) {
   const playerContainer = document.createElement('div')
   const playerAnswer = state.playerAnswer
   playerContainer.classList.add('player')
@@ -16,7 +16,7 @@ async function renderPlayer (player) {
       <span class="${
         player.nationality === playerAnswer.nationality && 'correct'
       }">
-        <img src="${player.flagImage}" />
+        <img src="${player.flagImage}" class="player-flag" />
       </span>
       <span class="${
         player.league.name === playerAnswer.league.name && 'correct'

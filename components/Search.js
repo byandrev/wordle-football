@@ -1,57 +1,58 @@
-import state from "../utils/state"
+import state from '../utils/state'
 
-function updatePlaceholder(input) {
-    input.placeholder = `Intento ${state.attempts+1} de 6`
+function updatePlaceholder (input) {
+  input.placeholder = `Intento ${state.attempts + 1} de 6`
 }
 
+function filterPlayers (namePlayer) {
+  const playersContainer = document.createElement('div')
 
-function filterPlayers(namePlayer) {
-    const playersContainer = document.createElement('div')
+  state.players.forEach((player) => {
+    if (namePlayer.length > 0 && player.name.includes(namePlayer)) {
+      const playerElement = document.createElement('div')
+      playerElement.classList.add('result')
+      playerElement.setAttribute('data-id', player.id)
+      playerElement.innerHTML = `${player.name}`
+      playersContainer.appendChild(playerElement)
+    }
+  })
 
-    state.players.forEach(player => {
-        if (namePlayer.length > 0 && player.name.includes(namePlayer)) {
-            const playerElement = document.createElement('div')
-            playerElement.classList.add('result')
-            playerElement.setAttribute('data-id', player.id)
-            playerElement.innerHTML = `${player.name}`
-            playersContainer.appendChild(playerElement)
-        }
-    })
-
-    return playersContainer.outerHTML
+  return playersContainer.outerHTML
 }
 
-function Search(callback) {
-    const searchContainer = document.createElement('div')
-    const input = document.createElement('input')
-    const results = document.createElement('div')
+function Search (callback) {
+  const searchContainer = document.createElement('div')
+  const input = document.createElement('input')
+  const results = document.createElement('div')
 
-    updatePlaceholder(input)
-    searchContainer.classList.add('search')
-    results.classList.add('search-results')
+  updatePlaceholder(input)
+  searchContainer.classList.add('search')
+  results.classList.add('search-results')
 
-    input.addEventListener('keyup', (e) => {
-        results.innerHTML = filterPlayers(e.target.value)
-    })
+  input.addEventListener('keyup', (e) => {
+    results.innerHTML = filterPlayers(e.target.value)
+  })
 
-    results.addEventListener('click', e => {
-        const target = e.target
-        if (target.className.includes('result')) {
-            const playerIdSelected = target.getAttribute('data-id')
-            input.value = ''
+  results.addEventListener('click', (e) => {
+    const target = e.target
+    if (target.className.includes('result')) {
+      const playerIdSelected = target.getAttribute('data-id')
+      input.value = ''
 
-            state.lives--
-            state.attempts++
+      console.log('ID: ' + playerIdSelected)
 
-            callback(playerIdSelected)
-            updatePlaceholder(input)
-        }
-    })
+      state.lives--
+      state.attempts++
 
-    searchContainer.append(input)
-    searchContainer.append(results)
+      callback(playerIdSelected)
+      updatePlaceholder(input)
+    }
+  })
 
-    return searchContainer
+  searchContainer.append(input)
+  searchContainer.append(results)
+
+  return searchContainer
 }
 
 export default Search

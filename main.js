@@ -23,8 +23,7 @@ function selector (playerId) {
     return
   }
 
-  console.log(state.flags)
-  const playerSelected = state.players.find((player) => player.id === playerId)
+  const playerSelected = state.players.find((player) => player.id === parseInt(playerId))
   const flagPlayer = state.flags.find(flag => flag.name === playerSelected.nationality) || null
 
   playerSelected.flagImage = flagPlayer.image
@@ -32,8 +31,6 @@ function selector (playerId) {
   const playersContiners = document.createElement('div')
   playersContiners.appendChild(renderPlayer(playerSelected))
   app.appendChild(playersContiners)
-
-  console.log(playerId, state.playerAnswer.id)
 
   if (parseInt(playerId) === state.playerAnswer.id) {
     alert('Win!!' + ', Attempts: ' + state.attempts)
