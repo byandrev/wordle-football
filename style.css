@@ -80,22 +80,34 @@ body {
 }
 
 .player-info {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  align-items: center;
+  min-height: 50px;
+  gap: .5rem;
+  font-size: .9rem;
 }
 
 .player-info span {
-  display: block;
-  background-color: red;
-  margin-right: .3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+  background-color: rgb(221, 78, 78);
   padding: .2rem .3rem;
 }
 
 .player-info span.correct {
-  background-color: green;
+  background-color: rgb(80, 190, 80);
 }
 
-.player-flag {
+.player-logo {
   width: 30px;
   display: block;
   margin: 0;
+}
+
+.player-team {
+  width: 25px;
 }

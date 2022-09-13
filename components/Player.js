@@ -5,8 +5,6 @@ function renderPlayer (player) {
   const playerAnswer = state.playerAnswer
   playerContainer.classList.add('player')
 
-  console.log(player)
-
   playerContainer.innerHTML = `
     <div class="player-header">
       <img src="${player.photo}" class="player-avatar" />
@@ -14,16 +12,23 @@ function renderPlayer (player) {
     </div>
     <div class="player-info">
       <span class="${
-        player.nationality === playerAnswer.nationality && 'correct'
-      }">
-        <img src="${player.flagImage}" class="player-flag" />
-      </span>
-      <span class="${
         player.league.name === playerAnswer.league.name && 'correct'
-      }">${player.league.name}</span>
+      }">
+        <img src="${player.league.logo}" title="${player.league.name}" class="player-logo player-team" />
+      </span>
+
       <span class="${
         player.team.name === playerAnswer.team.name && 'correct'
-      }">${player.team.name}</span>
+      }">
+        <img src="${player.team.logo}" title="${player.team.name}" class="player-logo" />
+      </span>
+
+      <span class="${
+        player.nationality === playerAnswer.nationality && 'correct'
+      }">
+        <img src="${player.flagImage}" title="${player.nationality}" class="player-logo player-flag" />
+      </span>
+
       <span class="${player.age === playerAnswer.age && 'correct'}">
         ${
           player.age !== playerAnswer.age
