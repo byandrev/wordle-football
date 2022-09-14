@@ -39,13 +39,12 @@ function Search (callback) {
       const playerIdSelected = target.getAttribute('data-id')
       input.value = ''
 
-      console.log('ID: ' + playerIdSelected)
-
       state.lives--
       state.attempts++
 
       callback(playerIdSelected)
       updatePlaceholder(input)
+      results.innerHTML = ''
     }
   })
 
