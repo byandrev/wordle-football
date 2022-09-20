@@ -1,0 +1,34 @@
+:root {
+  --bg-color: #202124;
+  --green-color: #419d78;
+  --red-color: #db3a34;
+  --yellow-color: #ffc857;
+  --text: #fff;
+
+  --font-family: 'Poppins', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text);
+  font-family: var(--font-family);
+}
+
+#root {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+
+.search.win {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: var(--bg-color);
+  text-align: center;
+}
