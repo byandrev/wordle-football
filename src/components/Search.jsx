@@ -1,36 +1,43 @@
 import React, { useEffect, useState } from 'react'
-
 import styles from '../styles/Search.module.css'
 
 import PlayerResult from './PlayerResult'
 
-function Search ({ players, selectPlayer }) {
+// TODO: No dejar seleccionar mas jugadores cuando alcanza el limite, mostrar una alerta (crear ese componente)
+
+function Search ({ players = [], win, setPlayerSelected, playerAnswer, playersHistory }) {
   const [playerName, setPlayerName] = useState('')
-  const [filteredsPlayers, setFilteredsPlayers] = useState(players)
-  const [showSearchResults, setShowSearchResults] = useState(false)
+  const [playersResult, setPlayersResult] = useState(players)
+  const [showResults, setShowResults] = useState(false)
 
   useEffect(() => {
-    const filters = players.filter(player => player.name.toLowerCase().includes(playerName))
-    setFilteredsPlayers([...new Map(filters.map((m) => [m.id, m])).values()])
+    const filters = players.filter(player => player.name.toLowerCase().includes(playerName.toLowerCase()))
+    setPlayersResult([...new Map(filters.map((m) => [m.id, m])).values()])
   }, [playerName])
 
   const handleChange = (evt) => {
     setPlayerName(evt.target.value.trim())
-    setShowSearchResults(true)
+
+    if (evt.target.value.length === 0) {
+      setShowResults(false)
+      return
+    }
+
+    setShowResults(true)
   }
 
   const handleClick = (player) => {
-    selectPlayer(player)
-    setShowSearchResults(false)
+    setPlayerSelected(player)
+    setShowResults(false)
     setPlayerName('')
   }
 
   return <div className={styles.search}>
-    <input type="text" className={styles.input} value={playerName} onChange={handleChange} />
+    <input type="text" disabled={win} placeholder={`Intento ${playersHistory.length} / 6`} className={`${styles.input} ${win && 'block'}`} value={playerName} onChange={handleChange} />
 
-    {showSearchResults &&
+    {showResults &&
       <div className={styles.results}>
-        { filteredsPlayers.map(player => (
+        { playersResult.map(player => (
             <div onClick={() => handleClick(player)} key={player.id}>
               <PlayerResult
                 name={player.name}
@@ -43,4 +50,4 @@ function Search ({ players, selectPlayer }) {
   </div>
 }
 
-export default React.memo(Search)
+export default Search

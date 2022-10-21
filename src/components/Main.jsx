@@ -1,10 +1,10 @@
 import React, { useContext } from 'react'
 
 import Header from './Header'
-import { PlayersContext } from '../context/PlayersContext'
+//import { PlayersContext } from '../context/PlayersContext'
 
 function Main () {
-  const players = useContext(PlayersContext)
+  //const players = useContext(PlayersContext)
   // const [playersSelecteds, setPlayersSelecteds] = useState([])
   // const [playerAnswer, setPlayerAnswer] = useState(null)
   console.log(players)
