@@ -3,10 +3,10 @@ import Player from './Player'
 
 import styles from '../styles/PlayersSelecteds.module.css'
 
-function PlayersSelected ({ players = [], playerAnswer }) {
+function PlayersSelected ({ flags, players = [], playerAnswer }) {
   return <div className={styles.playersSelecteds}>
     { players && players.map(player => (
-      <Player key={player.id} playerAnswer={playerAnswer} {...player} />
+      <Player flags={flags} key={player.id} playerAnswer={playerAnswer} {...player} />
     )) }
   </div>
 }

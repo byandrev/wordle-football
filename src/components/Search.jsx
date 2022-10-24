@@ -3,8 +3,6 @@ import styles from '../styles/Search.module.css'
 
 import PlayerResult from './PlayerResult'
 
-// TODO: No dejar seleccionar mas jugadores cuando alcanza el limite, mostrar una alerta (crear ese componente)
-
 function Search ({ players = [], win, setPlayerSelected, playerAnswer, playersHistory }) {
   const [playerName, setPlayerName] = useState('')
   const [playersResult, setPlayersResult] = useState(players)

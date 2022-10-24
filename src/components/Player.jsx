@@ -1,9 +1,14 @@
+import { useEffect, useState } from 'react'
 import styles from '../styles/Player.module.css'
 import PlayerItem from './PlayerItem'
 
-// TODO: Poner las banderas de las nacionalidades
+function Player ({ flags, playerAnswer, name, photo, team, league, nationality, position, age }) {
+  const [flag, setFlag] = useState(null)
 
-function Player ({ playerAnswer, name, photo, team, league, nationality, position, age }) {
+  useEffect(() => {
+    setFlag(flags.find(flag => flag.name === nationality))
+  }, [])
+
   return <div className={styles.player}>
     <div className={styles.header}>
       <img src={photo} className={styles.avatar} />
@@ -13,7 +18,7 @@ function Player ({ playerAnswer, name, photo, team, league, nationality, positio
     <div className={styles.info}>
       <PlayerItem selected={team.name} answer={playerAnswer.team.name} icon={team.logo} />
       <PlayerItem selected={league.name} answer={playerAnswer.league.name} icon={league.logo} />
-      <PlayerItem selected={nationality} answer={playerAnswer.nationality} icon={league.flag} />
+      <PlayerItem selected={nationality} answer={playerAnswer.nationality} icon={flag && flag.image} />
       <PlayerItem selected={age} answer={playerAnswer.age} content={age} />
       <PlayerItem selected={position} answer={playerAnswer.position} content={position} />
     </div>

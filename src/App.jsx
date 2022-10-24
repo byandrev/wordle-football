@@ -4,6 +4,7 @@ import Header from './components/Header'
 import Search from './components/Search'
 
 import getPlayers from './utils/getPlayers'
+import getFlags from './utils/getFlags'
 import generateRandomPlayer from './utils/generateRandomPlayer'
 import PlayersSelecteds from './components/PlayersSelecteds'
 
@@ -12,12 +13,15 @@ function App () {
   const [playerSelected, setPlayerSelected] = useState(null)
   const [playerAnswer, setPlayerAnswer] = useState(null)
   const [playersHistory, setPlayersHistory] = useState([])
+  const [flags, setFlags] = useState([])
   const [win, setWin] = useState(false)
 
   useEffect(() => {
     return async () => {
       const playersRes = await getPlayers()
+      const flags = await getFlags()
       setPlayers(playersRes)
+      setFlags(flags)
       setPlayerAnswer(generateRandomPlayer(playersRes))
     }
   }, [])
@@ -37,10 +41,12 @@ function App () {
     console.log(playerAnswer)
   }
 
+  if (flags) console.log(flags)
+
   return <>
     <Header />
     <Search players={players} win={win} setPlayerSelected={setPlayerSelected} playerAnswer={playerAnswer} playersHistory={playersHistory} />
-    <PlayersSelecteds players={playersHistory} playerAnswer={playerAnswer} />
+    <PlayersSelecteds flags={flags} players={playersHistory} playerAnswer={playerAnswer} />
   </>
 }
 
