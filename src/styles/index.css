@@ -12,18 +12,11 @@
   box-sizing: border-box;
 }
 
-body {
-  background-color: var(--bg-color);
-  color: var(--text);
-  font-family: var(--font-family);
-}
-
 #root {
   width: 90%;
-  max-width: 400px;
+  max-width: 500px;
   margin: 0 auto;
 }
-
 
 .search.win {
   background-color: #fff;
