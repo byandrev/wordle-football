@@ -18,6 +18,8 @@
 
 .name {
   display: block;
+  font-size: .8rem;
+  user-select: none;
 }
 
 .info {

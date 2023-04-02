@@ -5,8 +5,13 @@
 
   height: 100%;
   background-color: rgb(221, 78, 78);
-  padding: 0.2rem 0.3rem;
+  padding: 0.2rem 1rem;
   border-radius: 5px;
+
+  font-size: .8rem;
+  color: #fff;
+
+  user-select: none;
 }
 
 .correct {
